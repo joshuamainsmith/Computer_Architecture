@@ -5,8 +5,8 @@
 .data
 	before: .asciiz "\nBefore: "
 	after: .asciiz "\nAfter: " 
-	string1: .asciiz "string1"
-	string2: .asciiz "hello"
+	string1: .asciiz "pickle"
+	string2: .asciiz "banana"
 	NL: .asciiz "\n"
 	x: .word 5
 	y: .word 6
@@ -77,11 +77,18 @@ main:
 	la $a0, string1
 	la $a1, string2
 	
+	# Test #################################################
+	addi $s0, $zero, 0
+	jal test
+	# jal test1
+	
 	# Jump to strcpy
-	jal strcpy
+	# jal strcpy
+	
+	add $s0, $zero, $zero
 	
 	# Jump to first loop
-	jal strcpyLoop
+	# jal strcpyLoop
 	
 	#Display "after" message
 	li $v0, 4
@@ -172,7 +179,7 @@ After:
 	lw $a0, ($s1)
 	syscall
 	
-	# Return to main function (line 49)
+	# Return to main function
 	jr $ra
 	
 
@@ -194,6 +201,8 @@ strcpy:
 	jr $ra
 
 strcpyLoop:
+	# string0 is in a1, string1 is in a2 (addresses)
+	
 	# Set a1 at s0 into t1
 	add $t1, $s0, $a1
 	
@@ -231,39 +240,99 @@ NewLine:
 	
 	jr $ra
 	
+test:
+	# address in t1
+	add $t0, $s0, $a1
+	
+	lbu $t1, 0($t0)
+	
+	sb $t1, 0($sp)
+	#
+	add $t2, $s0, $a0
+	
+	lbu $t1, 0($sp)
+	
+	sb $t1, 0($t2)
+	
+	addi $s0, $s0, 1
+	
+	bne $t1, $zero, test
+	jr $ra
+
+	
+		
+			
+				
+					
+						
+							
+								
+									
+										
+											
+												
+													
+														
+															
+																
+																	
+																		
+																			
+																				
+																					
+																						
+																							
+																								
+																									
+	
+test1:
+	add $t0, $s0, $a1
+	addi $sp, $sp, -1
+	
+	lbu $t1, 0($t0)
+	
+	sb $t1, 0($sp)
+	
+	addi $s0, $s0, 1
+	
+	bne $t1, $zero, test1
+	
+	addi $s1, $zero, 0
+	
+	j test2
+
+test2:
+	add $t2, $s1, $a0
+	
+	lbu $t5, 0($sp)
+	
+	sb $t5, 0($t6)
+	
+	addi $sp, $sp, 1
+	#
+	
+	lbu $t1, 0($fp)
+	
+	sb $t1, 0($t2)
+	
+	addi $s1, $s1, 1
+	
+	bne $t1, $zero, test2
+	
+	j restore
+
+restore:
+	#addi $sp, $sp, 1
+	
+	addi $fp, $fp, 1
+	
+	addi $s0, $s0, -1
+	
+	bne $s0, $zero, restore
+
+	jr $ra
+	
 end:
 	# Quitting program
 	li $v0,10
 	syscall
-	
-	
-# 1. swap()
-# Example C code:
-#
-# main ()
-# {
-#	int a = 5, b = 6;
-#	swap(a,b);
-#	// or
-#	swap (&a, &b);
-# }
-#
-# swap (a, b)
-# {
-#	// this0
-#	t = a;
-#	a = b;
-#	b = t;
-# }
-# // or
-# swap (*a, *b)
-# {
-#	// this1
-#	t = *a;
-#	*a = *b;
-#	*b = t;
-# }
-#
-# 2. strcpy()
-# Example C code:
-# while (*t++ = *s++);
