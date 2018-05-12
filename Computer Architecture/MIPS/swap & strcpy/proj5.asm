@@ -77,17 +77,16 @@ main:
 	la $a0, string1
 	la $a1, string2
 	
-	# Test #################################################
+	# Jump to string copy
 	addi $s0, $zero, 0
-	jal test
-	# jal test1
+	jal scpy
 	
-	# Jump to strcpy
+	# Delete?
 	# jal strcpy
 	
 	add $s0, $zero, $zero
 	
-	# Jump to first loop
+	# Delete?
 	# jal strcpyLoop
 	
 	#Display "after" message
@@ -188,6 +187,41 @@ After:
 	# 2. strcpy() Subroutines
 ##################################### 	
 
+scpy:
+	# Store address from string2 into t0
+	add $t0, $s0, $a1
+	
+	# Load ch into t1
+	lbu $t1, 0($t0)
+	
+	# Store ch onto the stack
+	sb $t1, 0($sp)
+	
+	# Store address from string1 into t2
+	add $t2, $s0, $a0
+	
+	# Load ch byte into t1
+	lbu $t1, 0($sp)
+	
+	# Store ch byte into t2
+	sb $t1, 0($t2)
+	
+	# Increment through string2 address
+	addi $s0, $s0, 1
+	
+	# When finished, jump to return address
+	bne $t1, $zero, scpy
+	jr $ra
+
+
+
+
+
+
+
+
+# Delete subroutines?
+
 strcpy:
 	# Allocate space to the stack
 	addi $sp, $sp, -4
@@ -231,59 +265,6 @@ strcpyRestore:
 	addi $sp, $sp, 4
 	
 	jr $ra
-	
-NewLine:
-	# Make a new line
-	li $v0, 4
-	la $a0, NL
-	syscall
-	
-	jr $ra
-	
-test:
-	# address in t1
-	add $t0, $s0, $a1
-	
-	lbu $t1, 0($t0)
-	
-	sb $t1, 0($sp)
-	#
-	add $t2, $s0, $a0
-	
-	lbu $t1, 0($sp)
-	
-	sb $t1, 0($t2)
-	
-	addi $s0, $s0, 1
-	
-	bne $t1, $zero, test
-	jr $ra
-
-	
-		
-			
-				
-					
-						
-							
-								
-									
-										
-											
-												
-													
-														
-															
-																
-																	
-																		
-																			
-																				
-																					
-																						
-																							
-																								
-																									
 	
 test1:
 	add $t0, $s0, $a1
@@ -331,6 +312,19 @@ restore:
 	bne $s0, $zero, restore
 
 	jr $ra
+#
+	
+	
+	
+	
+NewLine:
+	# Make a new line
+	li $v0, 4
+	la $a0, NL
+	syscall
+	
+	jr $ra	
+
 	
 end:
 	# Quitting program
