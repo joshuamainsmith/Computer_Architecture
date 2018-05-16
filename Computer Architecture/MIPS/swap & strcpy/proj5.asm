@@ -191,15 +191,12 @@ After:
 	# 2. strcpy() Subroutines
 ##################################### 	
 
-scpy:
-	# Store address from string2 into t0
-	# add $t0, $s0, $a1
-	
+scpy:	
+	# Load character into t1	
 	lbu $t1, 0($a1)
-	addi $a1, $a1, 1
 	
-	# Load ch into t1
-	# lbu $t1, 0($t0)
+	# Increment through address
+	addi $a1, $a1, 1
 	
 	# Store ch onto the stack
 	sb $t1, 0($sp)	
