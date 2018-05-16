@@ -4,6 +4,7 @@
 .data
 	prompt: .asciiz "Enter an integer: "
 	result: .asciiz "\nResult: "
+	quit: .asciiz "\nPress 0 to quit, anything else to continue: "
 
 .text
 
@@ -20,12 +21,21 @@ main:
 	syscall
 	
 	# Move result to s0
-	move $s0, $v0
+	# move $s0, $v0
 	
 	# Add to stack
-	addi $sp, $sp, -4
+	addi $sp, $sp, -8
 	
-	jal rec
+	# Store input onto the stack
+	sw $v0, 4($sp)
+	
+	jal store
+	
+	# Restore stack
+	addi $sp, $sp, 8
+	
+	# Move result from v0 to t0
+	move $t0, $v0
 	
 	#Display result message
 	li $v0, 4 
@@ -34,26 +44,50 @@ main:
 	
 	#Print int
 	li $v0, 1
-	lw $a0, 0($sp)
+	move $a0, $t0
 	syscall
 	
-	# Restore stack
-	addi $sp, $sp, 4
+	#Display result message
+	li $v0, 4 
+	la $a0, quit
+	syscall
 	
+	# Take user input
+	li $v0, 5
+	syscall
+	
+	# Decision to end program
+	beq $v0, $zero, end
+	j main	
+	
+store:
+	# Clear v0
+	addi $v0, $zero, 0
+	
+	# Store return address onto the stack
+	sw $ra, 0($sp)
+	
+	j rec
+	 
+rec:		
+	# Call from the stack
+	lw $t0, 4($sp)
+	
+	# Recursive add into v0
+	add $v0, $v0, $t0
+	
+	# (rec(n - 1))
+	addi $t0, $t0, -1
+	
+	# Store back onto the stack
+	sw $t0, 4($sp)
+	
+	# Return to subroutine if s0 != 0
+	bne $t0, $zero, rec
+	lw $ra, 0($sp)
+	jr $ra
+	
+end:
 	# Quit program
 	li $v0,10
 	syscall
-	 
-rec:	
-	# Recursive add
-	add $s1, $s1, $s0
-	
-	# Store result on stack
-	sw $s1, 0($sp)
-	
-	# Decrement
-	addi $s0, $s0, -1
-	
-	# Return to subroutine if s0 != 0
-	bne $s0, $zero, rec
-	jr $ra
