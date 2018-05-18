@@ -20,9 +20,6 @@ main:
 	li $v0, 5
 	syscall
 	
-	# Move result to s0
-	# move $s0, $v0
-	
 	# Add to stack
 	addi $sp, $sp, -8
 	
@@ -68,6 +65,16 @@ store:
 	sw $ra, 0($sp)
 	
 	j rec
+	
+# Rec2
+	# addi -4 to sp
+	# store ra to the stack
+	# addi -4 to sp
+	# v0 -1
+	# store v0 to stack
+	# bne v0 == 0, rec2
+	# Add v0, v0, sp(0)
+	# 
 	 
 rec:		
 	# Call from the stack
