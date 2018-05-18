@@ -1,6 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+#define PI 3.14
+
+
 int main ()
 {
     int input = 0;
@@ -78,7 +81,31 @@ void NewtonSecondLaw()
 
 void VolumeCylinder()
 {
+    double v = 0, r = 0, h = 0;
+    char decision = "\0";
 
+    printf ("\nVolume of a cylinder");
+    printf ("\nVolume = PI * radius squared * height");
+
+    printf ("\nEnter the radius: ");
+    scanf ("%lf", &r);
+
+    printf ("\nEnter the height: ");
+    scanf ("%lf", &h);
+
+    v = PI * (r * r) * h;
+
+    printf ("\nVolume = PI * radius squared * height = %.2lf * %.2lf^2 * %.2lf = %.2lf", PI, r, h, v);
+
+    printf ("\nWould you like to calculate another example (y/n)? ");
+    scanf (" %c", &decision);
+
+    printf ("\n%c", decision);
+    if (decision == 'y')
+    {
+        system("cls");
+        VolumeCylinder();
+    }
 }
 
 void CharacterEncode ()
