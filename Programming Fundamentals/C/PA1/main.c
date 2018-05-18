@@ -14,7 +14,7 @@ int main ()
     printf ("6. Distance between two points\n");
     printf ("7. General Equation\n");
     printf("8. Quit\n");
-    scanf("%d", input);
+    scanf("%d", &input);
 
     switch (input)
     {
@@ -51,7 +51,29 @@ int main ()
 
 void NewtonSecondLaw()
 {
+    double f = 0, m = 0, a = 0;
+    char decision = "\0";
 
+    printf ("\nNewton\'s Second Law of Motion");
+    printf ("\nF = ma");
+    printf ("\nEnter the mass in kilograms: ");
+    scanf ("%lf", &m);
+
+    printf ("\nEnter the acceleration in meters per second: ");
+    scanf ("%lf", &a);
+
+    f = m * a;
+    printf ("\nF = m * a = %.2lf kg * %.2lf m/s/s = %.2lf N", m, a, f);
+
+    printf ("\nWould you like to calculate another example (y/n)? ");
+    scanf (" %c", &decision);
+
+    printf ("\n%c", decision);
+    if (decision == 'y')
+    {
+        system("cls");
+        NewtonSecondLaw();
+    }
 }
 
 void VolumeCylinder()
