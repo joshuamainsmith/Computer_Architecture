@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <math.h>
 
 #define PI 3.14
 #define G 0.0000000000667
@@ -238,7 +239,33 @@ void ResDiv ()
 */
 void TwoPoint ()
 {
+    double d = 0;
+    int x1 = 0, x2 = 0, y1 = 0, y2 = 0;
+    char decision = '\0';
 
+    system ("cls");
+
+    printf ("Distance between two points");
+    printf ("\ndistance = sqrt((x1 - x2)^2 + (y1 - y2)^2)");
+
+    printf ("\nEnter the x-coordinate (x1, x2), separated by a space: ");
+    scanf ("%d%d", &x1, &x2);
+
+    printf ("\nEnter the y-coordinate (y1, y2), separated by a space: ");
+    scanf("%d%d", &y1, &y2);
+
+    d = sqrt(((x1 * x1) + ((-2) * x1 * x2) + (x2 * x2)) + ((y1 * y1) + ((-2) * y1 * y2) + (y2 * y2)));
+
+    printf ("distance = sqrt((x1 - x2)^2 + (y1 - y2)^2) = sqrt((%d - %d)^2 + (%d - %d)^2)= %.2lf", x1, x2, y1, y2, d);
+
+    printf ("\nWould you like to calculate another example (y/n)? ");
+    scanf (" %c", &decision);
+
+    printf ("\n%c", decision);
+    if (decision == 'y')
+    {
+        TwoPoint();
+    }
 }
 
 /*
