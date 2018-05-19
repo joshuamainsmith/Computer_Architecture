@@ -61,6 +61,9 @@ int main ()
             break;
         default:
             printf ("Invalid Input\n");
+            system("pause");
+            system("cls");
+            main();
     }
 
     return 0;
@@ -134,7 +137,28 @@ void VolumeCylinder()
 */
 void CharacterEncode ()
 {
+    char p = '\0', e = '\0', decision = '\0';
 
+    system("cls");
+
+    printf ("Character encoding");
+    printf ("\nEncoded Character: shift the plaintext -a then shift +A");
+
+    printf ("\nEnter the plaintext character: ");
+    scanf (" %c", &p);
+
+    e = (p - 'a') + 'A';
+
+    printf ("\nPlaintext character: %c, Encoded character: %c", p, e);
+
+    printf ("\nWould you like to encode another example (y/n)? ");
+    scanf (" %c", &decision);
+
+    printf ("\n%c", decision);
+    if (decision == 'y')
+    {
+        CharacterEncode();
+    }
 }
 
 /*
@@ -143,7 +167,7 @@ void CharacterEncode ()
 void GravityCalc ()
 {
     double f = 0, m1 = 0, m2 = 0, d = 0;
-    char decision = "\0";
+    char decision = '\0';
 
     system("cls");
 
