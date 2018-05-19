@@ -2,6 +2,7 @@
 #include <stdlib.h>
 
 #define PI 3.14
+#define G 0.0000000000667
 
 
 int main ()
@@ -23,27 +24,40 @@ int main ()
     {
         case 1:
             NewtonSecondLaw();
+            system("cls");
+            main();
             break;
         case 2:
             VolumeCylinder();
+            system("cls");
+            main();
             break;
         case 3:
             CharacterEncode ();
+            system("cls");
+            main();
             break;
         case 4:
             GravityCalc ();
+            system("cls");
+            main();
             break;
         case 5:
             ResDiv ();
+            system("cls");
+            main();
             break;
         case 6:
             TwoPoint ();
+            system("cls");
+            main();
             break;
         case 7:
             GenEq ();
+            system("cls");
+            main();
             break;
         case 8:
-            return 0;
             break;
         default:
             printf ("Invalid Input\n");
@@ -51,13 +65,17 @@ int main ()
 
     return 0;
 }
-
+/*
+1.
+*/
 void NewtonSecondLaw()
 {
     double f = 0, m = 0, a = 0;
     char decision = "\0";
 
-    printf ("\nNewton\'s Second Law of Motion");
+    system("cls");
+
+    printf ("Newton\'s Second Law of Motion");
     printf ("\nF = ma");
     printf ("\nEnter the mass in kilograms: ");
     scanf ("%lf", &m);
@@ -74,17 +92,21 @@ void NewtonSecondLaw()
     printf ("\n%c", decision);
     if (decision == 'y')
     {
-        system("cls");
         NewtonSecondLaw();
     }
 }
 
+/*
+2.
+*/
 void VolumeCylinder()
 {
     double v = 0, r = 0, h = 0;
     char decision = "\0";
 
-    printf ("\nVolume of a cylinder");
+    system("cls");
+
+    printf ("Volume of a cylinder");
     printf ("\nVolume = PI * radius squared * height");
 
     printf ("\nEnter the radius: ");
@@ -103,31 +125,73 @@ void VolumeCylinder()
     printf ("\n%c", decision);
     if (decision == 'y')
     {
-        system("cls");
         VolumeCylinder();
     }
 }
 
+/*
+3.
+*/
 void CharacterEncode ()
 {
 
 }
 
+/*
+4.
+*/
 void GravityCalc ()
 {
+    double f = 0, m1 = 0, m2 = 0, d = 0;
+    char decision = "\0";
 
+    system("cls");
+
+    printf ("Gravitational force between two bodies");
+    printf ("\nForce = G * mass1 * mass2 / distance^2");
+
+    printf ("\nEnter the mass for the first body in kg: ");
+    scanf ("%lf", &m1);
+
+    printf ("\nEnter the mass for the second body in kg: ");
+    scanf("%lf", &m2);
+
+    printf ("\nEnter the distance between the two bodies in km: ");
+    scanf ("%lf", &d);
+
+    f = (G * m1 * m2) / (d * d);
+
+    printf ("\nForce = G * mass1 * mass2 / distance^2 = 6.67*10^-11 * %.2lf kg * %.2lf kg / %.2lf^2 km = %.2lf N", G, m1, m2, d, f);
+
+    printf ("\nWould you like to calculate another example (y/n)? ");
+    scanf (" %c", &decision);
+
+    printf ("\n%c", decision);
+    if (decision == 'y')
+    {
+        GravityCalc();
+    }
 }
 
+/*
+5.
+*/
 void ResDiv ()
 {
 
 }
 
+/*
+6.
+*/
 void TwoPoint ()
 {
 
 }
 
+/*
+7.
+*/
 void GenEq ()
 {
 
