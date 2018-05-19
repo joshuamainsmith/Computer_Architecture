@@ -74,7 +74,7 @@ int main ()
 void NewtonSecondLaw()
 {
     double f = 0, m = 0, a = 0;
-    char decision = "\0";
+    char decision = '\0';
 
     system("cls");
 
@@ -105,7 +105,7 @@ void NewtonSecondLaw()
 void VolumeCylinder()
 {
     double v = 0, r = 0, h = 0;
-    char decision = "\0";
+    char decision = '\0';
 
     system("cls");
 
@@ -202,7 +202,35 @@ void GravityCalc ()
 */
 void ResDiv ()
 {
+    double vo = 0, r1 = 0, r2 = 0, vi = 0;
+    char decision = '\0';
 
+    system("cls");
+
+    printf ("Resistive Divider Calculation");
+    printf ("\nVo = R2 / (R1 + R2) * Vi");
+
+    printf ("\nEnter value of the first resistor (ohm): ");
+    scanf ("%lf", &r1);
+
+    printf ("\nEnter value of the second resistor (ohm): ");
+    scanf ("%lf", &r2);
+
+    printf ("\nEnter value of the input voltage (V): ");
+    scanf ("%lf", &vi);
+
+    vo = (r2 / (r1 + r2)) * vi;
+
+    printf ("\nVo = R2 / (R1 + R2) * Vi = %.2lf / (%.2lf + %.2lf) * %.2lf = %.2lf", r2, r1, r2, vi, vo);
+
+    printf ("\nWould you like to calculate another example (y/n)? ");
+    scanf (" %c", &decision);
+
+    printf ("\n%c", decision);
+    if (decision == 'y')
+    {
+        ResDiv();
+    }
 }
 
 /*
