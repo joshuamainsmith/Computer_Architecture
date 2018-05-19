@@ -186,7 +186,7 @@ void GravityCalc ()
 
     f = (G * m1 * m2) / (d * d);
 
-    printf ("\nForce = G * mass1 * mass2 / distance^2 = 6.67*10^-11 * %.2lf kg * %.2lf kg / %.2lf^2 km = %.2lf N", G, m1, m2, d, f);
+    printf ("\nForce = G * mass1 * mass2 / distance^2 = 6.67*10^-11 * %.2lf kg * %.2lf kg / %.2lf^2 km = %.2lf N", m1, m2, d, f);
 
     printf ("\nWould you like to calculate another example (y/n)? ");
     scanf (" %c", &decision);
@@ -273,5 +273,34 @@ void TwoPoint ()
 */
 void GenEq ()
 {
+    int a = 0;
+    float y = 0, z = 0, x = 0;
+    char decision = '\0';
 
+    system("cls");
+
+    printf ("General Equation");
+    printf ("\ny = (89/27) - z * x + a / (a mod 2)");
+
+    printf ("\nEnter value for z: ");
+    scanf ("%f", &z);
+
+    printf ("\nEnter value for x: ");
+    scanf ("%f", &x);
+
+    printf ("\nEnter value for a: ");
+    scanf ("%d", &a);
+
+    y = (((double)89)/((double)27)) - z * x + a / (a%2);
+
+    printf ("\ny = (89/27) - z * x + a / (a mod 2) = 3.29 - %.2f * %.2f + %d (%d mod 2) = %.2f", z, x, a, a, y);
+
+    printf ("\nWould you like to calculate another example (y/n)? ");
+    scanf (" %c", &decision);
+
+    printf ("\n%c", decision);
+    if (decision == 'y')
+    {
+        GenEq();
+    }
 }
