@@ -1,17 +1,21 @@
-# Project 6
-# Recursive Add
+# Joshua Main-Smith
+# Project 6 - Recursion
+# CSCD 260
+# Spring 2018
 
-.data
-	prompt: .asciiz "Enter an integer: "
-	result: .asciiz "\nResult: "
-	quit: .asciiz "\nPress 0 to quit, anything else to continue: "
-
+.data 
+	prompt: .asciiz "Enter Value: "
+	result: .asciiz "\nThe result is: "
+	quest: .asciiz "\nPress 0 to quit, anything else to continue "
+	answer: .word 0
+	num: .word 0
+	
 .text
-
 .globl main
 
 main:
-	#Display prompt
+	
+	# Prompt message
 	li $v0, 4
 	la $a0, prompt
 	syscall
@@ -20,81 +24,72 @@ main:
 	li $v0, 5
 	syscall
 	
-	# Add to stack
-	addi $sp, $sp, -8
+	# Recursion
+	jal rec
 	
-	# Store input onto the stack
-	sw $v0, 4($sp)
+	# Store result from rec to num
+	sw $v0, num
 	
-	jal store
-	
-	# Restore stack
-	addi $sp, $sp, 8
-	
-	# Move result from v0 to t0
-	move $t0, $v0
-	
-	#Display result message
-	li $v0, 4 
+	# result message
+	li $v0, 4
 	la $a0, result
 	syscall
 	
-	#Print int
+	# Display int
 	li $v0, 1
-	move $a0, $t0
+	lw $a0, num
 	syscall
 	
-	#Display result message
-	li $v0, 4 
-	la $a0, quit
+	# Quest message
+	li $v0, 4
+	la $a0, quest
 	syscall
 	
 	# Take user input
 	li $v0, 5
 	syscall
 	
-	# Decision to end program
-	beq $v0, $zero, end
-	j main	
+	# Move result to temp
+	move $t0, $v0
 	
-store:
-	# Clear v0
-	addi $v0, $zero, 0
+	# Decision to quit program or continue
+	bne $t0, $zero, main
+	j end
 	
-	# Store return address onto the stack
+	
+rec:
+	
+	# Add to the stack
+	addi $sp, $sp, -8
+	
+	# Store return address and s0
 	sw $ra, 0($sp)
+	sw $v0, 4($sp)
 	
-	j rec
+	# When v0 is finished, go to recdone
+	beq $v0, 0, recDone
+		
+	# Decrement
+	addi $v0, $v0, -1
 	
-# Rec2
-	# addi -4 to sp
-	# store ra to the stack
-	# addi -4 to sp
-	# v0 -1
-	# store v0 to stack
-	# bne v0 == 0, rec2
-	# Add v0, v0, sp(0)
-	# 
-	 
-rec:		
-	# Call from the stack
-	lw $t0, 4($sp)
+	# Recursion
+	jal rec
 	
-	# Recursive add into v0
-	add $v0, $v0, $t0
 	
-	# (rec(n - 1))
-	addi $t0, $t0, -1
 	
-	# Store back onto the stack
-	sw $t0, 4($sp)
-	
-	# Return to subroutine if s0 != 0
-	bne $t0, $zero, rec
+recDone:
+	# Load return address and s0
 	lw $ra, 0($sp)
-	jr $ra
+	lw $s0, 4($sp)
 	
+	# Recursive add
+	add $v0, $v0, $s0
+	
+	# Restore the stack
+	addu $sp, $sp, 8
+	jr $ra	
 end:
-	# Quit program
+	# End program
 	li $v0,10
 	syscall
+	
