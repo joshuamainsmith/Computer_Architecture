@@ -1,0 +1,324 @@
+html, body {
+	width: 100%;
+	height: 100%;
+}
+
+.background {
+	background-image: url('../images/road.jpg');
+	background-size: cover;
+	background-position: center center;
+	position: relative;
+	top: 0;
+	bottom: 0;
+	height: 100vh;
+	z-index: -10;
+}
+
+#back-over {
+	position: absolute;
+	background-color: rgba(0, 0, 0, 0.5);
+	top: -30%;
+	bottom: 0;
+	height: 100%;
+	width: 100%;
+	z-index: -5;
+}
+
+#sgnin {
+	position: absolute;
+	right: 0;
+	top: -12.5%;
+	display: block;
+	margin: 5px;
+	padding: 5px;
+	border: 5px;
+	background-color: navy;
+	color: white;
+	border-radius: 5px;
+	font-weight: bold;
+
+
+}
+
+#sgnin:hover {
+	background-color: red;
+	color: black;
+}
+
+#img {
+	position: absolute;
+	right: 5%;
+	top: -12.5%;
+	display: block;
+	margin: 5px;
+	padding: 5px;
+	border: 5px;
+	background-color: transparent;
+	color: white;
+	border-radius: 5px;
+
+}
+
+#img:hover {
+	background-color: yellow;
+	color: black;
+}
+
+#mail {
+	position: absolute;
+	right: 10%;
+	top: -12.5%;
+	display: block;
+	margin: 5px;
+	padding: 5px;
+	border: 5px;
+	background-color: transparent;
+	color: white;
+	border-radius: 5px;
+}
+
+#mail:hover {
+	background-color: yellow;
+	color: black;
+}
+
+#logo img {
+	height: 12.5%;
+	width: 12.5%;
+	display: block;
+	position: relative;
+	margin: 0 auto;
+	margin-top: 100px;
+}
+
+#title {
+	position: relative;
+	font-weight: bold;
+	font-size: xx-large;
+	color: #00D700;
+	text-shadow: 3px 3px 1px #A2A2A2;
+	text-align: center;
+}
+
+#sButton1 {
+	position: relative;
+	
+	border: 3px;
+	margin: 0;
+	padding: 7px;
+	display: inline;
+	border-radius: 5px;
+	left: 33.5%;
+}
+#sButton2 {
+	position: relative;
+	border: 3px;
+	margin: 0;
+	padding: 7px;
+	display: inline-block;
+	border-radius: 5px;
+	left: 34%;
+}
+
+
+#sBox {
+	position: relative;
+	display: block;
+	margin: 0 auto;
+	width: 32.5%;
+	height: 30px;
+}
+
+/*  search1.html  */
+
+.s1MH {
+	display: block;
+	border: 3px;
+	margin: 3px;
+	padding: 3px;
+	height: 5em;
+	width: 5em;
+}
+
+.s1 {
+	display: block;
+	position: absolute;
+	left: 4%;
+	top: 20px;
+	width: 55%;
+	height: 30px;
+	border-radius: 5px;
+
+}
+
+.header {
+	width: 100%;
+	height: 120px;
+	background-color: #F4FB8B;
+	margin: 0;
+	border: 3px;
+	padding: 3px;
+}
+
+#all {
+	top: 70px;
+	left: 4%;
+	text-decoration: underline blue;
+	color: blue;
+}
+
+#imgs {
+	top: 70px;
+	left: 7.5%;
+}
+
+#shpng {
+	top: 70px;
+	left: 13%;
+}
+
+#vds {
+	top: 70px;
+	left: 20%;
+}
+
+#nws {
+	top: 70px;
+	left: 25%;
+}
+
+#mor {
+	top: 70px;
+	left: 30%;
+}
+
+#stgs {
+	top: 70px;
+	left: 50%;
+}
+
+#tls {
+	top: 70px;
+	left: 57%;
+}
+
+
+.b1 {
+	position: absolute;
+	background-color: transparent;
+	border-radius: 5px;
+	margin: 0;
+	border: 3px;
+	padding: 3px;
+	font-weight: bold;
+}
+
+.body-ovr {
+	margin: 0;
+	border: 3px;
+	padding: 3px;
+	height: cover;
+	width: 100%;
+	background-color: #48624B;
+}
+
+.body {
+	margin: 0 auto;
+	border: 3px;
+	padding: 3px;
+	height: 100%;
+	width: 80%;
+	background-color: #FFF;
+}
+
+.small {
+	font-size: small;
+}
+
+.hyper {
+	font-weight: bold;
+	font-color: #1A0DAB;
+}
+
+a:link {
+	text-decoration: none;
+}
+
+.linkage {
+	color: green;
+}
+
+table tr td{
+	width: 100%;
+	border: 1px solid #A8A8A8;
+	margin: 0;
+	padding: 10px;
+	border-collapse: collapse;
+	width: 700px;
+}
+
+#related td{
+	border: 0;
+	padding: 3px;
+	text-align: left;
+	color: blue;
+	font-weight: bold;
+}
+
+#related th {
+	padding: 15px;
+	text-align: left;
+	font-weight: bold;
+	font-size: large;
+}
+
+#arrow {
+	float: right;
+}
+
+.footer {
+	clear: both;
+	width: 100%;
+	height: 120px;
+	background-color: #F4FB8B;
+	margin: 0;
+	border: 3px;
+	padding: 3px;
+}
+
+#ftrmonk {
+	position: absolute;
+	left: 48%;
+	margin: 0;
+	padding: 0;
+	border: 0;
+}
+
+#ftrprv {
+	position: relative;
+	left: 37%;
+	clear: both;
+	top: 50px;
+	margin: 0;
+	padding: 0;
+	border: 0;
+	height: 5%;
+	width: 5%;
+	background-color: brown;
+	color: yellow;
+}
+
+
+#ftrnxt {
+	position: relative;
+	left: 52.5%;
+	clear: both;
+	top: 50px;
+	margin: 0;
+	padding: 0;
+	border: 0;
+	height: 5%;
+	width: 5%;
+	background-color: brown;
+	color: yellow;
+}

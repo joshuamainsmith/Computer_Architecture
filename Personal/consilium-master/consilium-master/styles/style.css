@@ -1,0 +1,97 @@
+/******* Header Begins *******/
+.header {
+	border:3px dashed;
+
+	height: 100px;
+}
+
+.logo {
+	border: 3px dashed;
+	margin: 5px;
+	padding: 3px;
+
+	height: 80px;
+	width: 370px;
+
+}
+
+#home_nav {
+	border: 1px dashed;
+	margin: 3px;
+	padding: 5px;
+
+	height: 60px;
+	width: 350px;
+}
+
+.logo, #home_nav {
+	font-family: Georgia, "Times New Roman", serif;
+	font-style: oblique;
+	font-size: 2.0em;
+	font-weight: bold;
+
+	color: #01018f;
+
+	text-shadow: 2px 2px black;
+}
+
+/******* Header Ends *******/
+
+
+
+
+/******* Body Begins *******/
+.overlay {
+	border:0;
+	margin: 0 auto;
+
+	height: 800px;
+	width: 100%;
+
+	background-color: #01018f;
+}
+
+.content {
+	border:0;
+	margin: 0 auto;
+
+	height: 100%;
+	width: 80%;
+
+	background-color: #efefef;
+}
+
+.logo_sty {
+	padding: 20px 15px;
+
+	height: 205.5px;
+	width: 274px;
+}
+
+.sub_style {
+	font-family: Georgia, "Times New Roman", serif;
+	font-style: oblique;
+	font-size: 1.125em;
+	font-weight: bold;
+
+	color: purple;
+
+	text-shadow: 0.5px 0.5px black;
+}
+
+
+/******* Body Ends *******/
+
+
+
+
+
+/******* Footer Begins *******/
+.footer {
+	border:3px dashed;
+
+	height: 100px;
+
+	background-color: black;
+}
+/******* Footer Ends *******/
